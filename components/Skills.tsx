@@ -8,9 +8,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
-import {Skill, skills} from "../lib/data/skills";
+import {skills, roles, certifications} from "../data/skills";
 import {MdWork} from "react-icons/md";
 import {useEffect} from "react";
+import {Card, CardContent, CardMedia, Chip, Stack, Typography} from "@mui/material";
+import Link from "next/link";
+import {Skill} from "../interfaces";
 
 
 export default function Skills() {
@@ -25,24 +28,35 @@ export default function Skills() {
         event: React.MouseEvent<HTMLElement>,
         newCategory: string,
     ) => {
-        if (newCategory!=null){
+        if (newCategory != null) {
             setCategory(newCategory);
         }
     };
 
     const filterSkills = (category) => {
-        if (category === "all") {
-            setVisibleSkills(skills)
-        } else {
-            setVisibleSkills(skills.filter(x => x.categories.includes(category)))
+        let newSkills = skills;
+        if (category !== "all") {
+            newSkills = skills.filter(x => x.categories.includes(category))
         }
+
+        newSkills.sort((a, b) => {
+            if (a.strength !== b.strength) {
+                return a.strength > b.strength ? -1 : 1;
+            } else {
+                return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
+            }
+        })
+        setVisibleSkills(newSkills)
     }
 
     let categories = [...new Set([].concat(...skills.map(x => x.categories)))]
 
     return (
         <section id="skills">
-            <h1>Skills</h1>
+            <h1>Roles & Skills</h1>
+            <h2>Roles</h2>
+            <Roles/>
+            <h2>Skills</h2>
 
             <ToggleButtonGroup
                 color="primary"
@@ -57,6 +71,27 @@ export default function Skills() {
             <List sx={{width: '100%', maxWidth: 360}}>
                 {visibleSkills.map(SkillItem)}
             </List>
+
+            <h2>Certifications</h2>
+            {certifications.map((certification) =>
+                <Card sx={{maxWidth: 250}}>
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        image={certification.icon}
+                        alt="Paella dish"
+                    />
+                    <CardContent>
+                        {/*<img src={certification.icon} height={200} width={200} />*/}
+                        <Typography variant="body2" color="text.secondary">
+                            {certification.name}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            )}
+
+            <h2>Courses</h2>
+            <p>You can take a look to some of the courses I've completed in my <Link href={"/recommended"}>recommended</Link> list of books and courses.</p>
         </section>
     );
 }
@@ -65,13 +100,29 @@ export default function Skills() {
 function SkillItem(skill: Skill) {
     let stars = '⭐️'.repeat(skill.strength)
     return (
-        <ListItem>
+        <ListItem sx={{width: "fit-content"}}>
             <ListItemAvatar>
                 <Avatar>
                     <MdWork/>
                 </Avatar>
             </ListItemAvatar>
             <ListItemText primary={skill.name} secondary={stars} key={skill.name}/>
+            <Stack direction="row" spacing={1}>
+                {skill.categories.map(x => <Chip label={x} key={x} />)}
+            </Stack>
         </ListItem>
     )
 }
+
+
+function Roles() {
+    return (<>
+            {roles.map(role =>
+                <li>
+                    <b>{role.name}:</b> {role.description}
+                </li>
+            )}
+        </>
+    )
+}
+

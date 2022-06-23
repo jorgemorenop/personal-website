@@ -1,24 +1,5 @@
-import {Component} from "react";
+import {Certification, Role, Skill} from "../interfaces";
 
-enum SkillCategory {
-    Cloud = "Cloud",
-    DataEngineering = "Data Engineering",
-    ProgrammingLanguage = "Programming language",
-    MLOps = "MLOps"
-}
-enum SkillRole {
-    CloudEngineer = "Cloud Engineer",
-    DataEngineering = "Data Engineer",
-    DevOps = "DevOps",
-    MLOps = "MLOps"
-}
-
-export type Skill = {
-    name: string,
-    // categories: SkillCategory[],
-    categories: ("cloud" | "data engineering" | "language" | "database" | "ml & ai" | "other")[],
-    strength: number,
-}
 
 export const skills: Skill[] = [
     {
@@ -167,3 +148,40 @@ export const skills: Skill[] = [
         strength: 4,
     },
 ]
+
+
+export const roles: Role[] = [
+    {
+        name: "Data Engineer",
+        description: "Build pipelines to (E)xtract, (T)ransform and (L)oad data in or between different systems."
+    },
+    {
+        name: "Cloud Engineer / Architect",
+        description: "TODO"
+    },
+    {
+        name: "DevOps",
+        description: "TODO"
+    },
+    {
+        name: "MLOps",
+        description: "TODO"
+    },
+    {
+        name: "Data Scientist & ML engineer",
+        description: "TODO"
+    }
+]
+
+
+export const certifications: Certification[] = [
+    {
+        name: "AWS Solutions Architect Associate",
+        icon: "aws-certified-solutions-architect-associate.png",
+        url: "https://www.credly.com/badges/c297ffed-0668-465b-9f8a-79ee1901143c/public_url"
+    },
+]
+
+
+
+

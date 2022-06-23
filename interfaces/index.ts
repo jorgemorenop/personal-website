@@ -1,10 +1,40 @@
-// You can include shared interfaces/types in a separate file
-// and then use them in any component by importing them. For
-// example, to import the interface below do:
-//
-// import { User } from 'path/to/interfaces';
+// Experience
 
-export type User = {
-  id: number
-  name: string
+export type ExperienceItem = {
+    title: string,
+    subtitle: string,
+    years: string,
+    description: any,
+    type: "work" | "education"
+}
+
+// Resources
+
+export type RecommendedResource = {
+    title: string,
+    authors: string,
+    description: string,
+    categories: ("data" | "machine learning" | "programming" | "cloud")[]
+    type: "book" | "course",
+    url: string | null
+}
+
+// Skills
+
+export type Skill = {
+    name: string,
+    // categories: SkillCategory[],
+    categories: ("cloud" | "data engineering" | "language" | "database" | "ml & ai" | "other")[],
+    strength: number,
+}
+
+export type Role = {
+    name: string,
+    description: string,
+}
+
+export type Certification = {
+    name: string,
+    icon: string,
+    url: string
 }

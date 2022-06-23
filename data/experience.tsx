@@ -1,12 +1,4 @@
-import {Component} from "react";
-
-export type ExperienceItem = {
-    title: string,
-    subtitle: string,
-    years: string,
-    description: any,
-    type: "work" | "education"
-}
+import {ExperienceItem} from "../interfaces";
 
 export const experienceItems: ExperienceItem[] = [
     {

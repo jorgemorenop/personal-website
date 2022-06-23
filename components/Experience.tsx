@@ -1,7 +1,8 @@
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import {MdWork, MdSchool, MdStar} from 'react-icons/md';
-import {experienceItems, ExperienceItem} from "../lib/data/experience";
+import {experienceItems} from "../data/experience";
+import {ExperienceItem} from "../interfaces";
 
 
 
