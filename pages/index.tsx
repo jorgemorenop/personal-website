@@ -5,7 +5,6 @@ import Resources from "../components/Resources";
 
 const IndexPage = () => (
     <main>
-        <h1>Hello Next.js 👋</h1>
         <About />
         <Experience/>
         <Skills/>

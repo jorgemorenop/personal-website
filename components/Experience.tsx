@@ -37,7 +37,7 @@ function ExperienceItemBlock(item: ExperienceItem) {
 
 export default function Experience() {
     return (
-        <section id="experience">
+        <section id="experience" >
             <h1>Experience</h1>
             <VerticalTimeline>
                 <VerticalTimelineElement

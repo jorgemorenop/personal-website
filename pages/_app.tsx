@@ -6,14 +6,13 @@ import Navbar from '../components/Navbar';
 
 
 function MyApp({Component, pageProps}) {
-
     return (
         <>
             <Head>
                 <title>Jorge Moreno - Freelance Data & Cloud projects</title>
             </Head>
             <Navbar/>
-            <Component {...pageProps} />
+                <Component {...pageProps} />
         </>
     )
 }
