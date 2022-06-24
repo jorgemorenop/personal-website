@@ -26,24 +26,23 @@ const menuItems = [
 
 
 export default function Navbar() {
-    const SectionLink = ({path, label, isSection = true}) => (
-        isSection ?
-            <ScrollLink
-                activeClass="active"
-                to={path}
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={500}
-                key={label}
-            >
-                {label}
-            </ScrollLink>
-            :
-            <Link href={'/' + path}>
-                {label}
-            </Link>
-    )
+    const SectionLink = ({path, label, isPopover = false}) => {
+        const linkAttrs = {
+            activeClass: "active",
+            to: path,
+            spy: true,
+            smooth: true,
+            offset: -100,
+            duration: 500,
+            key: label,
+            children: label,
+        }
+        return (
+            isPopover ? <Popover.Button as={ScrollLink} {...linkAttrs} /> : <ScrollLink {...linkAttrs} />
+        )
+    }
+
+
 
     return (
         <header className="sticky top-0 z-50">
@@ -116,7 +115,7 @@ export default function Navbar() {
                             className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                             <div className="py-6 px-5 space-y-6">
                                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                                    {menuItems.map(SectionLink)}
+                                    {menuItems.map((x) => SectionLink({...x, isPopover: true}))}
                                 </div>
                                 <div className="grid grid-cols-8 gap-y-4 gap-x-2">
                                     <a href="https://github.com/jorgemorenop"
