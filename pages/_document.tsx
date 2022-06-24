@@ -6,10 +6,7 @@ export default function Document() {
     <Html>
       <Head />
       <body>
-        <Navbar />
-        {/*<div className="bg-white m-8 z-20 shadow">*/}
-            <Main />
-        {/*</div>*/}
+      <Main />
         <NextScript />
       </body>
     </Html>

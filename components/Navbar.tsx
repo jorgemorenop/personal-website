@@ -7,16 +7,16 @@ import {MdMenu as MenuIcon} from "react-icons/md";
 
 const menuItems = [
     {
-        path: "",
-        label: "Home",
+        path: "about",
+        label: "About me",
+    },
+    {
+        path: "skills",
+        label: "Skills and certifications",
     },
     {
         path: "experience",
         label: "Experience",
-    },
-    {
-        path: "skills",
-        label: "Skills and Certifications",
     },
     {
         path: "contact",
@@ -26,7 +26,7 @@ const menuItems = [
 
 
 export default function Navbar() {
-    const SectionLink = ({path, label, isSection = false}) => (
+    const SectionLink = ({path, label, isSection = true}) => (
         isSection ?
             <ScrollLink
                 activeClass="active"

@@ -10,7 +10,7 @@ function MyApp({Component, pageProps}) {
             <Head>
                 <title>Jorge Moreno - Freelance Data & Cloud projects</title>
             </Head>
-            {/*<Navbar/>*/}
+            <Navbar/>
             <Component {...pageProps} />
         </>
     )

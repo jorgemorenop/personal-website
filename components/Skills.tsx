@@ -80,7 +80,7 @@ export default function Skills() {
     }
 
     return (
-        <PageSection sectionName="Roles & Skills" sectionId="skills">
+        <PageSection sectionName="Skills & certifications" sectionId="skills">
             <Roles/>
 
             <h2>Skills</h2>
