@@ -5,6 +5,7 @@ export type ExperienceItem = {
     subtitle: string,
     years: string,
     description: any,
+    icon?: string,
     type: "work" | "education"
 }
 

@@ -2,6 +2,7 @@ import 'react-vertical-timeline-component/style.min.css';
 import {recommendedResources} from "../data/resources";
 import {Chip, Stack} from "@mui/material";
 import {RecommendedResource} from "../interfaces";
+import PageSection from "./PageSection";
 
 
 
@@ -23,13 +24,12 @@ function ResourceItem(resource: RecommendedResource) {
 
 export default function Resources() {
     return (
-        <section id="resources">
-            <h1>Recommended courses and books</h1>
+        <PageSection sectionName="Recommended courses and books" sectionId="resources">
             <h2>Courses</h2>
             {recommendedResources.filter(x => x.type == "course").map(ResourceItem)}
             <h2>Books</h2>
             {recommendedResources.filter(x => x.type == "book").map(ResourceItem)}
-        </section>
+        </PageSection>
 
     )
 }

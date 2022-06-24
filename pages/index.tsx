@@ -4,15 +4,16 @@ import About from "../components/About";
 import Resources from "../components/Resources";
 
 import { Element } from 'react-scroll'
+import Contact from "../components/Contact";
 
 const IndexPage = () => (
     <main>
         <Element id='home' name='home'>
+            <About />
+            <Skills />
+            <Experience/>
+            <Contact/>
         </Element>
-        <About />
-        <Experience/>
-        <Skills/>
-        <Resources/>
     </main>
 )
 

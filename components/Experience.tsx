@@ -3,18 +3,23 @@ import 'react-vertical-timeline-component/style.min.css';
 import {MdWork, MdSchool, MdStar} from 'react-icons/md';
 import {experienceItems} from "../data/experience";
 import {ExperienceItem} from "../interfaces";
+import PageSection from "./PageSection";
+
 
 
 
 function ExperienceItemBlock(item: ExperienceItem) {
+    let bgColorIcon;
     let bgColor;
     let icon;
 
     if (item.type == "work") {
-        bgColor = 'rgb(33, 150, 243)'
+        bgColor = '#acd7e7'
+        bgColorIcon = 'rgb(33, 150, 243)'
         icon = <MdWork/>
     } else if (item.type == "education") {
-        bgColor = 'rgb(233, 30, 99)'
+        bgColor = '#edc2d1'
+        bgColorIcon = 'rgb(233, 30, 99)'
         icon = <MdSchool/>
     } else {
         throw new Error(`Item type not supported: ${item.type}`)
@@ -25,11 +30,25 @@ function ExperienceItemBlock(item: ExperienceItem) {
             key={item.title+item.subtitle}
             className={`vertical-timeline-element--${item.type}`}
             date={item.years}
-            iconStyle={{background: bgColor, color: '#fff'}}
+            contentStyle={{background: bgColor, color: 'black'}}
+            contentArrowStyle={{borderRight: `7px solid  ${bgColor}`}}
+            iconStyle={{background: bgColorIcon, color: '#fff'}}
             icon={icon}
         >
-            <h3 className="vertical-timeline-element-title font-bold">{item.title}</h3>
-            <h3 className="vertical-timeline-element-subtitle italic">{item.subtitle}</h3>
+            <div className="flex space-x-2 items-center ">
+                { item?.icon ? <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="experience-logo"
+                    height='100%'
+                    width={60}
+                /> : <></>
+                }
+            <div>
+                <h3 className="vertical-timeline-element-title font-bold">{item.title}</h3>
+                <h3 className="vertical-timeline-element-subtitle italic">{item.subtitle}</h3>
+            </div>
+            </div>
             {item.description}
         </VerticalTimelineElement>
     )
@@ -37,23 +56,8 @@ function ExperienceItemBlock(item: ExperienceItem) {
 
 export default function Experience() {
     return (
-        <section id="experience" >
-            <h1>Experience</h1>
-            <VerticalTimeline>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    contentStyle={{background: 'lightblue', color: 'black'}}
-                    contentArrowStyle={{borderRight: '7px solid  rgb(33, 150, 243)'}}
-                    date="2022 (January) - present"
-                    iconStyle={{background: 'rgb(33, 150, 243)', color: '#fff'}}
-                    icon={<MdWork/>}
-                >
-                    <h3 className="vertical-timeline-element-title font-bold">Freelance Data/Cloud Engineer</h3>
-                    <h4 className="vertical-timeline-element-subtitle italic">Remote</h4>
-                    <p>
-                        Freelance work in projects related with Data and/or Cloud technologies
-                    </p>
-                </VerticalTimelineElement>
+        <PageSection sectionName="Experience" sectionId="experience" >
+            <VerticalTimeline lineColor="#b5bdc4">
 
                 {experienceItems.map(ExperienceItemBlock)}
 
@@ -62,7 +66,7 @@ export default function Experience() {
                     icon={<MdStar/>}
                 />
             </VerticalTimeline>
-        </section>
+        </PageSection>
 
     )
 }

@@ -2,10 +2,20 @@ import {ExperienceItem} from "../interfaces";
 
 export const experienceItems: ExperienceItem[] = [
     {
+        title: "Freelance Data/Cloud Engineer",
+        subtitle: "Freelance",
+        years: "2022 (January) - present",
+        type: "work",
+        description: <p>
+            Freelance work in projects related with Data and/or Cloud technologies
+        </p>
+    },
+    {
         title: "Data Engineer",
         subtitle: "Olympic Channel Services",
         years: "2019 - 2022",
         type: "work",
+        icon: "/logo-olympics.png",
         description: <p>
             <ul>
                 <li>
@@ -40,6 +50,7 @@ export const experienceItems: ExperienceItem[] = [
         subtitle: "GMV",
         years: "2017 - 2019",
         type: "work",
+        icon: "/logo-gmv.png",
         description: <p>
             Work on a wide range of Artificial Intelligence fields, such as Machine Learning, Deep Learning,
             Computer Vision, Ontology Engineering, Thread Intelligence or Natural Language Processing.
@@ -59,9 +70,10 @@ export const experienceItems: ExperienceItem[] = [
     },
     {
         title: "Master's Degree in Artificial Intelligence",
-        subtitle: "Master's Degree",
+        subtitle: "Polytechnic University of Madrid",
         years: "2016 - 2017",
         type: "education",
+        icon: "/logo-upm.png",
         description: <p>
             Master’s degree on Artificial Intelligence, heavily focused in research.
         </p>
@@ -71,6 +83,7 @@ export const experienceItems: ExperienceItem[] = [
         subtitle: "Polytechnic University of Madrid – Environment laboratory",
         years: "2015 - 2016",
         type: "work",
+        icon: "/logo-upm.png",
         description: <p>
             Configuration of several mathematical models (WRF, CAMx and WRF-Chem ) for weather and chemical
             predictions.
@@ -78,9 +91,10 @@ export const experienceItems: ExperienceItem[] = [
     },
     {
         title: "Bachelor's Degree in Mathematics and Informatics",
-        subtitle: "Bachelor's Degree",
+        subtitle: "Polytechnic University of Madrid",
         years: "2012 - 2016",
         type: "education",
+        icon: "/logo-upm.png",
         description: <p>
             Bachelor's degree that provides education in both Mathematics and Informatics fields, to combine
             them. Honorific mentions in both fields.

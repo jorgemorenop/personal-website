@@ -14,15 +14,14 @@ import {useEffect} from "react";
 import {Card, CardContent, CardMedia, Chip, Stack, Typography} from "@mui/material";
 import Link from "next/link";
 import {Skill} from "../interfaces";
+import PageSection from "./PageSection";
+import Collapsible from "react-collapsible";
 
 
-export default function Skills() {
+function DetailedSkills() {
     const [category, setCategory] = React.useState('all');
     const [visibleSkills, setVisibleSkills] = React.useState(skills);
 
-    useEffect(() => {
-        filterSkills(category)
-    }, [category])
 
     const handleChange = (
         event: React.MouseEvent<HTMLElement>,
@@ -49,7 +48,10 @@ export default function Skills() {
         setVisibleSkills(newSkills)
     }
 
-    let categories = [...new Set([].concat(...skills.map(x => x.categories)))]
+    useEffect(() => {
+        filterSkills(category)
+    }, [category])
+
 
     const handleClick = (label) => {
         if (category !== label) {
@@ -57,13 +59,11 @@ export default function Skills() {
         }
     }
 
-    return (
-        <section id="skills">
-            <h1>Roles & Skills</h1>
-            <h2>Roles</h2>
-            <Roles/>
-            <h2>Skills</h2>
+    let categories = [...new Set([].concat(...skills.map(x => x.categories)))]
 
+
+    return (
+        <>
             <div className="space-x-2">
                 <Chip
                     label="all"
@@ -71,24 +71,42 @@ export default function Skills() {
                     key="all"
                     variant={category === "all" ? "filled" : "outlined"}
                 />
-              {categories.map(x => <Chip
-                  label={x}
-                  onClick={() => handleClick(x)} key={x}
-                  variant={category === x ? "filled" : "outlined"}
-              />)}
+                {categories.map(x => <Chip
+                    label={x}
+                    onClick={() => handleClick(x)} key={x}
+                    variant={category === x ? "filled" : "outlined"}
+                />)}
 
             </div>
 
             <List sx={{width: '100%', maxWidth: 360}}>
                 {visibleSkills.map(SkillItem)}
             </List>
+        </>
+    )
+}
+
+
+export default function Skills() {
+
+
+    return (
+        <PageSection sectionName="Roles & Skills" sectionId="skills">
+            <h2>Roles</h2>
+            <Roles/>
+
+            <Collapsible trigger="Detailed Skills">
+                <DetailedSkills/>
+            </Collapsible>
 
             <h2>Certifications</h2>
-            {certifications.map((certification) =>
-                <Card sx={{maxWidth: 250}}>
+            <div className="grid grid-flow-col auto-cols-max">
+                {certifications.map((certification) =>
+                    <div>
+                <Card sx={{maxWidth: 150}}>
                     <CardMedia
                         component="img"
-                        height="200"
+                        height="auto"
                         image={certification.icon}
                         alt={certification.name}
                     />
@@ -99,11 +117,12 @@ export default function Skills() {
                         </Typography>
                     </CardContent>
                 </Card>
+                        </div>
             )}
+            </div>
 
-            <h2>Courses</h2>
-            <p>You can take a look to some of the courses I've completed in my <Link href={"/recommended"}>recommended</Link> list of books and courses.</p>
-        </section>
+
+        </PageSection>
     );
 }
 
@@ -120,7 +139,7 @@ function SkillItem(skill: Skill) {
             <ListItemText primary={skill.name} secondary={stars} key={skill.name}/>
 
             <div>
-                                {skill.categories.map(x => <Chip label={x} key={x} />)}
+                {skill.categories.map(x => <Chip label={x} key={x}/>)}
 
             </div>
 

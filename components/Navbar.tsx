@@ -1,13 +1,14 @@
 import {AiFillGithub, AiFillLinkedin} from 'react-icons/ai';
 import {Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
+import Link from 'next/link'
 import {Fragment} from 'react'
 import {Popover, Transition} from '@headlessui/react'
 import {MdMenu as MenuIcon} from "react-icons/md";
 
 const menuItems = [
     {
-        path: "about",
-        label: "About",
+        path: "",
+        label: "Home",
     },
     {
         path: "experience",
@@ -23,23 +24,25 @@ const menuItems = [
     },
 ]
 
+
 export default function Navbar() {
-    const SectionLink = ({path, label}) => (
-        // <a href={path} className="text-base font-medium text-gray-500 hover:text-gray-900 whitespace-nowrap">
-        //   {name}
-        // </a>
-        <ScrollLink
-            activeClass="active"
-            // sx={styles.nav.navLink}
-            to={path}
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
-            key={label}
-        >
-            {label}
-        </ScrollLink>
+    const SectionLink = ({path, label, isSection = false}) => (
+        isSection ?
+            <ScrollLink
+                activeClass="active"
+                to={path}
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                key={label}
+            >
+                {label}
+            </ScrollLink>
+            :
+            <Link href={'/' + path}>
+                {label}
+            </Link>
     )
 
     return (
@@ -48,25 +51,29 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div
                         className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-                        <ScrollLink
-                            activeClass="active"
-                            spy={true}
-                            smooth={true}
-                            offset={-100}
-                            duration={500}
-                            to="home"
-                        >
+                        {/*<ScrollLink*/}
+                        {/*    activeClass="active"*/}
+                        {/*    spy={true}*/}
+                        {/*    smooth={true}*/}
+                        {/*    offset={-100}*/}
+                        {/*    duration={500}*/}
+                        {/*    to="home"*/}
+                        {/*>*/}
                             <div className="flex justify-start lg:w-0 lg:flex-1">
-                                <img
-                                    className="h-8 w-auto sm:h-10 rounded-full"
-                                    src="/profile_image.jpeg"
-                                    alt=""
-                                />
+                                {/*<img*/}
+                                {/*    className="h-8 w-auto sm:h-10 rounded-full"*/}
+                                {/*    src="/profile_image.jpeg"*/}
+                                {/*    alt=""*/}
+                                {/*/>*/}
                                 <p className="m-1.5">
+                                <Link href="/">
                                     Jorge Moreno
+                                </Link>
                                 </p>
+
                             </div>
-                        </ScrollLink>
+
+                        {/*</ScrollLink>*/}
 
                         <div className="-mr-2 -my-2 md:hidden">
                             <Popover.Button
