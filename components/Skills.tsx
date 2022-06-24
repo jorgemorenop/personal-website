@@ -1,6 +1,4 @@
 import * as React from 'react';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,10 +7,9 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
 import {skills, roles, certifications} from "../data/skills";
-import {MdWork} from "react-icons/md";
+import {MdWork, MdArrowDropUp, MdArrowDropDown} from "react-icons/md";
 import {useEffect} from "react";
-import {Card, CardContent, CardMedia, Chip, Stack, Typography} from "@mui/material";
-import Link from "next/link";
+import {Chip} from "@mui/material";
 import {Skill} from "../interfaces";
 import PageSection from "./PageSection";
 import Collapsible from "react-collapsible";
@@ -21,16 +18,6 @@ import Collapsible from "react-collapsible";
 function DetailedSkills() {
     const [category, setCategory] = React.useState('all');
     const [visibleSkills, setVisibleSkills] = React.useState(skills);
-
-
-    const handleChange = (
-        event: React.MouseEvent<HTMLElement>,
-        newCategory: string,
-    ) => {
-        if (newCategory != null) {
-            setCategory(newCategory);
-        }
-    };
 
     const filterSkills = (category) => {
         let newSkills = skills;
@@ -88,37 +75,54 @@ function DetailedSkills() {
 
 
 export default function Skills() {
-
+    const collapsibleTrigger = (enabled: boolean) => {
+        return
+    }
 
     return (
         <PageSection sectionName="Roles & Skills" sectionId="skills">
-            <h2>Roles</h2>
             <Roles/>
 
-            <Collapsible trigger="Detailed Skills">
-                <DetailedSkills/>
-            </Collapsible>
+            <h2>Skills</h2>
+
+            <div className="shadow-xl p-4 mx-2 my-6">
+                <Collapsible
+                    trigger={
+                        <div className="flex space-x-2 align-middle">
+                            <MdArrowDropDown/>
+                            Show detailed view of skills
+                        </div>
+                    }
+                    triggerWhenOpen={
+                        <div className="flex">
+                            <MdArrowDropUp/>
+                            Hide detailed view of skills
+                        </div>
+                    }>
+                    <div className="pt-4">
+                        <DetailedSkills/>
+                    </div>
+                </Collapsible>
+            </div>
+
 
             <h2>Certifications</h2>
-            <div className="grid grid-flow-col auto-cols-max">
+            <div className="flex justify-center">
                 {certifications.map((certification) =>
-                    <div>
-                <Card sx={{maxWidth: 150}}>
-                    <CardMedia
-                        component="img"
-                        height="auto"
-                        image={certification.icon}
-                        alt={certification.name}
-                    />
-                    <CardContent>
-                        {/*<img src={certification.icon} height={200} width={200} />*/}
-                        <Typography variant="body2" color="text.secondary">
-                            {certification.name}
-                        </Typography>
-                    </CardContent>
-                </Card>
+                    <a href={certification.url}>
+                        <div className="rounded-md shadow-md w-40 p-4">
+                            <img
+                                src={certification.icon}
+                                alt={certification.name}
+                            />
+                            {/*<img src={certification.icon} height={200} width={200} />*/}
+                            <p style={{textAlign: "center"}}>
+                                <b>{certification.name}</b>
+                            </p>
+
                         </div>
-            )}
+                    </a>
+                )}
             </div>
 
 
@@ -150,12 +154,50 @@ function SkillItem(skill: Skill) {
 
 function Roles() {
     return (<>
-            {roles.map(role =>
-                <li>
-                    <b>{role.name}:</b> {role.description}
-                </li>
-            )}
+            <h2>Key roles</h2>
+
+            <RolesTable>
+                {roles.map(role =>
+                    // <li>
+                    <RoleSlot title={role.name}>
+                        <ul>
+                            {role.descriptions.map(x => <li>
+                                {x}
+                            </li>)}
+                        </ul>
+                    </RoleSlot>
+                )}
+            </RolesTable>
         </>
     )
 }
+
+
+function RolesTable({children}) {
+    return (
+        <div className="react-pricing-table">
+            <div className="flex flex-wrap">{children}</div>
+        </div>
+    )
+}
+
+function RoleSlot({title, highlighted = false, highlightColor="#f44336", children}) {
+    return (
+
+        <div className="Grid-cell">
+            <ul className="price basic-border">
+                <li
+                    className={
+                        (highlighted ? "highlighted" : "basic") + "-header"
+                    }
+                >
+                    {title}
+                </li>
+                {children}
+            </ul>
+        </div>
+    )
+}
+
+
 

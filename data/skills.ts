@@ -153,23 +153,33 @@ export const skills: Skill[] = [
 export const roles: Role[] = [
     {
         name: "Data Engineer",
-        description: "Build pipelines to (E)xtract, (T)ransform and (L)oad data in or between different systems."
+        descriptions: [
+            "Build pipelines to (E)xtract, (T)ransform and (L)oad data in or between different systems."
+            ]
     },
     {
         name: "Cloud Engineer / Architect",
-        description: "TODO"
+        descriptions: [
+            "TODO"
+            ]
     },
     {
         name: "DevOps",
-        description: "TODO"
+        descriptions: [
+            "TODO"
+        ]
     },
     {
         name: "MLOps",
-        description: "TODO"
+        descriptions: [
+            "TODO"
+        ]
     },
     {
         name: "Data Scientist & ML engineer",
-        description: "TODO"
+        descriptions: [
+        "TODO"
+        ]
     }
 ]
 

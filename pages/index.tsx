@@ -1,7 +1,7 @@
 import Experience from "../components/Experience";
 import Skills from "../components/Skills";
 import About from "../components/About";
-import Resources from "../components/Resources";
+
 
 import { Element } from 'react-scroll'
 import Contact from "../components/Contact";
