@@ -14,9 +14,9 @@ function ResourceItem(resource: RecommendedResource) {
     return (
         <li>
             {title} - {resource.description}
-            <Stack direction="row" spacing={1}>
+            <div>
                 {resource.categories.map(x => <Chip label={x} key={x} variant="outlined" />)}
-            </Stack>
+            </div>
         </li>
     )
 }

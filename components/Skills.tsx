@@ -51,6 +51,12 @@ export default function Skills() {
 
     let categories = [...new Set([].concat(...skills.map(x => x.categories)))]
 
+    const handleClick = (label) => {
+        if (category !== label) {
+            setCategory(label)
+        }
+    }
+
     return (
         <section id="skills">
             <h1>Roles & Skills</h1>
@@ -58,15 +64,20 @@ export default function Skills() {
             <Roles/>
             <h2>Skills</h2>
 
-            <ToggleButtonGroup
-                color="primary"
-                value={category}
-                exclusive
-                onChange={handleChange}
-            >
-                <ToggleButton value="all">ALL</ToggleButton>
-                {categories.map(x => <ToggleButton value={x} key={x}>{x}</ToggleButton>)}
-            </ToggleButtonGroup>
+            <div className="space-x-2">
+                <Chip
+                    label="all"
+                    onClick={() => handleClick("all")}
+                    key="all"
+                    variant={category === "all" ? "filled" : "outlined"}
+                />
+              {categories.map(x => <Chip
+                  label={x}
+                  onClick={() => handleClick(x)} key={x}
+                  variant={category === x ? "filled" : "outlined"}
+              />)}
+
+            </div>
 
             <List sx={{width: '100%', maxWidth: 360}}>
                 {visibleSkills.map(SkillItem)}
@@ -79,7 +90,7 @@ export default function Skills() {
                         component="img"
                         height="200"
                         image={certification.icon}
-                        alt="Paella dish"
+                        alt={certification.name}
                     />
                     <CardContent>
                         {/*<img src={certification.icon} height={200} width={200} />*/}
@@ -107,9 +118,12 @@ function SkillItem(skill: Skill) {
                 </Avatar>
             </ListItemAvatar>
             <ListItemText primary={skill.name} secondary={stars} key={skill.name}/>
-            <Stack direction="row" spacing={1}>
-                {skill.categories.map(x => <Chip label={x} key={x} />)}
-            </Stack>
+
+            <div>
+                                {skill.categories.map(x => <Chip label={x} key={x} />)}
+
+            </div>
+
         </ListItem>
     )
 }
