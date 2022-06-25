@@ -41,6 +41,9 @@ export default function About() {
                         wanted
                         to improve a bit my skills with React, Next.js, and web development in general (which were close
                         to non-existent).
+                        <br/>
+                        <br/>
+                        The web source code is publicly available in <a className="link" href="https://github.com/jorgemorenop/personal-website">Github</a>.
 
                     </p>
                 </div>

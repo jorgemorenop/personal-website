@@ -38,15 +38,14 @@ a {
   cursor: pointer;
 }
 
-a.social {
+a.link {
   transition: 0.3s ease;
-  color: black;
-  border-radius: 50px;
-  padding: 8px;
+  color: darkcyan;
 }
-.social:hover {
-  color: gray;
+.link:hover {
+  color: darkblue;
 }
+
 
 * {
   box-sizing: border-box;
