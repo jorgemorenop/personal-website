@@ -40,9 +40,9 @@ function ExperienceItemBlock(item: ExperienceItem) {
                 { item?.icon ? <Image
                     src={item.icon}
                     alt={item.title}
-                    className="experience-logo"
+                    objectFit='contain'
                     height='100%'
-                    width={60}
+                    width={80}
                 /> : <></>
                 }
             <div>

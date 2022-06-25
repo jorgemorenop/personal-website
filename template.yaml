@@ -1,0 +1,105 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  Stack base for our Jorge Moreno personal web
+
+Parameters:
+  Environment:
+    Description: Name of the environment to be deployed.
+    Type: String
+    AllowedValues:
+      - dev
+      - prod
+  ServiceName:
+    Type: String
+    Description: Prefix of the service
+    Default: test
+  CertArn:
+    Type: String
+
+
+Resources:
+  PersonalWebCloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Join [".", [!Ref ServiceName, "{{resolve:ssm:/domain/default:1}}"]]
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+          TargetOriginId: personal-web-s3-origin-${Environment}
+          ForwardedValues:
+            Headers: []
+            QueryString: False
+          ViewerProtocolPolicy: redirect-to-https
+        Comment: Distribution to cache and distribute personal web static files
+        Enabled: True
+        Origins:
+          - DomainName: !GetAtt PersonalWebBucket.RegionalDomainName
+            Id: personal-web-s3-origin-${Environment}
+            OriginPath: /personal-web
+            S3OriginConfig:
+              OriginAccessIdentity: !Join [ '', [ 'origin-access-identity/cloudfront/', !Ref OriginAccessIdentity ]]
+        PriceClass: PriceClass_All
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertArn  # "{{resolve:ssm:/certs/acm/default:1}}"
+          MinimumProtocolVersion: TLSv1.1_2016 # TLSv1.2_2018
+          SslSupportMethod: sni-only
+
+  OriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: Origin Access identity to Restrict traffic in PersonalWeb CF distribution
+
+  DNSRecord:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: !Join ["", ["{{resolve:ssm:/domain/default:1}}","." ]]
+      RecordSets:
+        - Name: !Join [".", [!Ref ServiceName, "{{resolve:ssm:/domain/default:1}}"]]
+          Type: CNAME
+          ResourceRecords: [ !GetAtt PersonalWebCloudFrontDistribution.DomainName ]
+          TTL: 300
+
+  PersonalWebBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+#      AccessControl: PublicRead
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
+
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref PersonalWebBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Id: PolicyForCloudFrontPrivateContent
+        Statement:
+          - Effect: Allow
+            Principal:
+              CanonicalUser:
+                Fn::GetAtt: [ OriginAccessIdentity , S3CanonicalUserId ]
+            Action: s3:GetObject
+            Resource: !Join ['', [ 'arn:aws:s3:::', !Ref PersonalWebBucket, '/personal-web/*' ] ]
+          - Action:
+              - s3:*
+            Effect: Deny
+            Resource:
+              - !Sub arn:aws:s3:::${JwksSource}
+              - !Sub arn:aws:s3:::${JwksSource}/*
+            Principal: "*"
+            Condition:
+              Bool:
+                "aws:SecureTransport": "false"
