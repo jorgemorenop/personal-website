@@ -15,11 +15,9 @@ export default function About() {
                     />
                 </div>
 
-                {/*<div className="flex max-w-md align-middle h-fit ">*/}
-
                 <div>
                     <p style={{fontSize: "x-large", textAlign: "center"}}> Hi 👋</p>
-                    <p style={{textAlign: "center", verticalAlign: "middle", maxHeight: 400}} className="w-auto">
+                    <p style={{textAlign: "center", verticalAlign: "middle"}} className="w-auto">
 
 
                         <br/>
