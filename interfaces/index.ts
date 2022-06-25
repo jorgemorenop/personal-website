@@ -31,7 +31,7 @@ export type Skill = {
 
 export type Role = {
     name: string,
-    descriptions: string[],
+    descriptions: any[],
 }
 
 export type Certification = {

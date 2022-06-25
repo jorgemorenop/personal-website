@@ -490,7 +490,7 @@ input[type="file"] {
 }
 
 /* Style the list */
-.price {
+.role {
   list-style-type: none;
   margin: 20px;
   -webkit-transition: margin 0.5s ease-out;
@@ -509,12 +509,12 @@ input[type="file"] {
 }
 
 /* Add shadows on hover */
-.price:hover {
+.role:hover {
   margin-top: 10px;
 }
 
 /* Pricing header */
-.price .highlighted-header {
+.role .highlighted-header {
   background-color: #f44336;
   color: white;
   font-size: 24px;
@@ -522,7 +522,7 @@ input[type="file"] {
   padding-bottom: 15px;
 }
 
-.price .basic-header {
+.role .basic-header {
   background-color: #f8f9fa;
   color: grey;
   font-size: 24px;
@@ -531,7 +531,7 @@ input[type="file"] {
 }
 
 /* List items */
-.price li {
+.role li {
   /*  border-bottom: 1px solid #eee; */
   padding: 5px;
   text-align: center;
@@ -539,7 +539,7 @@ input[type="file"] {
 }
 
 /* tag list item */
-.price .tag {
+.role .tag {
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;

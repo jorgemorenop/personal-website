@@ -154,31 +154,51 @@ export const roles: Role[] = [
     {
         name: "Data Engineer",
         descriptions: [
-            "Build pipelines to (E)xtract, (T)ransform and (L)oad data in or between different systems."
-            ]
+            <p>Build pipelines to (E)xtract, (T)ransform and (L)oad data in or between different systems</p>,
+            <p>Choose and implement the right tool for the right job</p>,
+            <p><b>Key languages</b>: Python & SQL</p>,
+            <p><b>Key technologies</b>: Cloud services, Spark (w/ pyspark), pandas</p>,
+
+        ]
     },
     {
         name: "Cloud Engineer / Architect",
         descriptions: [
-            "TODO"
-            ]
-    },
-    {
-        name: "DevOps",
-        descriptions: [
-            "TODO"
+            <p>Design and implement <i>scalable</i>, <i>robust</i> and <i>secure</i> solutions in the cloud</p>,
+            <p>High focus on Serveless infrastructure</p>,
+            <p>Broad and deep experience with <b>AWS</b></p>,
+            <p>Some experience with GCloud (with Firebase) and Azure</p>,
         ]
     },
     {
-        name: "MLOps",
+        name: "DevOps & MLOps",
         descriptions: [
-            "TODO"
+            <p>Automate your deployments with the best practices using pipelines, Infrastructure as Code, environment reproducibility, versioning, etc.</p>,
+            <p>Apply the same techniques to build your ML models</p>,
         ]
     },
     {
         name: "Data Scientist & ML engineer",
         descriptions: [
-        "TODO"
+            <p>Experience implementing and tuning ML models</p>,
+            <p>Experience performing data analysis</p>,
+        ]
+    },
+    {
+        name: "Software engineer",
+        descriptions: [
+            <p>Focus on best practices and pragmatic approach</p>,
+            <p>Try to generalize processes and build internal tools for the team benefit</p>,
+            <p>Additional experience outside of the previous roles that can help in specific times
+                <ul style={{listStyle: "inside"}}>
+                    <li>
+                        Backend: work with APIs, knowledge of networking, DNS, security,
+                    </li>
+                    <li>Frontend: small experience building websites and mobile apps
+                    </li>
+                </ul>
+            </p>,
+
         ]
     }
 ]

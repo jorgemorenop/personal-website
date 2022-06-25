@@ -66,26 +66,21 @@ function DetailedSkills() {
 
             </div>
 
-            <List sx={{width: '100%', maxWidth: 360}}>
+            <ul className="w-full pt-4">
                 {visibleSkills.map(SkillItem)}
-            </List>
+            </ul>
         </>
     )
 }
 
 
 export default function Skills() {
-    const collapsibleTrigger = (enabled: boolean) => {
-        return
-    }
-
     return (
         <PageSection sectionName="Skills & certifications" sectionId="skills">
             <Roles/>
+            <p>If you want to check the skills and technologies in my toolkit more in detail, you can use this totally unnecessary and over-engineered skill visualization:</p>
 
-            <h2>Skills</h2>
-
-            <div className="shadow-xl p-4 mx-2 my-6">
+            <div className="shadow-xl p-4 my-6 outline outline-gray-200">
                 <Collapsible
                     trigger={
                         <div className="flex space-x-2 align-middle">
@@ -132,22 +127,18 @@ export default function Skills() {
 
 
 function SkillItem(skill: Skill) {
-    let stars = '⭐️'.repeat(skill.strength)
+    // let stars = '⭐️'.repeat(skill.strength)
     return (
-        <ListItem sx={{width: "fit-content"}}>
-            <ListItemAvatar>
-                <Avatar>
-                    <MdWork/>
-                </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={skill.name} secondary={stars} key={skill.name}/>
-
-            <div>
-                {skill.categories.map(x => <Chip label={x} key={x}/>)}
-
+        <li>
+            <div className="flex py-1 my-1 px-2 bg-blue-50 w-full">
+                <div className="mr-3">
+                    <p>{skill.name}</p>
+                </div>
+                            <div className="space-x-2 space-y-1">
+                    {skill.categories.map(x => <Chip label={x} key={x}/>)}
+                </div>
             </div>
-
-        </ListItem>
+        </li>
     )
 }
 
@@ -160,10 +151,14 @@ function Roles() {
                 {roles.map(role =>
                     // <li>
                     <RoleSlot title={role.name}>
-                        <ul>
-                            {role.descriptions.map(x => <li>
-                                {x}
-                            </li>)}
+                        <ul className="role">
+                            {role.descriptions.map(x =>
+                                <li
+                                    // className="role"
+                                    // style={{listStyleType: "circle", listStylePosition: "inside"}}
+                                >
+                                    {x}
+                                </li>)}
                         </ul>
                     </RoleSlot>
                 )}
@@ -185,7 +180,7 @@ function RoleSlot({title, highlighted = false, highlightColor="#f44336", childre
     return (
 
         <div className="Grid-cell">
-            <ul className="price basic-border">
+            <ul className="role basic-border">
                 <li
                     className={
                         (highlighted ? "highlighted" : "basic") + "-header"
