@@ -42,6 +42,13 @@ export default function Navbar() {
         )
     }
 
+    const SocialLink = ({href, children}) => {
+        return (
+            <a href={href} className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                {children}
+            </a>
+        )
+    }
 
 
     return (
@@ -87,19 +94,16 @@ export default function Navbar() {
 
                         </Popover.Group>
 
-                        <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                            <a href="https://github.com/jorgemorenop"
-                               className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                        <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 gap-x-2">
+                            <SocialLink href="https://github.com/jorgemorenop">
                                 <AiFillGithub size="3rem"/>
-                            </a>
-                            <a href="https://www.linkedin.com/in/jorgemorenop/"
-                               className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 ml-2">
+                            </SocialLink>
+                            <SocialLink href="https://www.linkedin.com/in/jorgemorenop/">
                                 <AiFillLinkedin size="3rem"/>
-                            </a>
-                            <a href="mailto:jorgemorenodev@gmail.com"
-                               className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 ml-2">
+                            </SocialLink>
+                            <SocialLink href="mailto:jorgemorenodev@gmail.com">
                                 <AiOutlineMail size="3rem"/>
-                            </a>
+                            </SocialLink>
                         </div>
                     </div>
                 </div>
@@ -122,18 +126,15 @@ export default function Navbar() {
                                     {menuItems.map((x) => SectionLink({...x, isPopover: true}))}
                                 </div>
                                 <div className="grid grid-cols-8 gap-y-4 gap-x-8">
-                                    <a href="https://github.com/jorgemorenop"
-                                       className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                                    <SocialLink href="https://github.com/jorgemorenop">
                                         <AiFillGithub size="3rem"/>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/jorgemorenop/"
-                                       className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                                    </SocialLink>
+                                    <SocialLink href="https://www.linkedin.com/in/jorgemorenop/">
                                         <AiFillLinkedin size="3rem"/>
-                                    </a>
-                                    <a href="mailto:jorgemorenodev@gmail.com"
-                                       className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                                    </SocialLink>
+                                    <SocialLink href="mailto:jorgemorenodev@gmail.com">
                                         <AiOutlineMail size="3rem"/>
-                                    </a>
+                                    </SocialLink>
                                 </div>
                             </div>
                         </div>
