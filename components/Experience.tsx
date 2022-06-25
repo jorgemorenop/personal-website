@@ -4,6 +4,7 @@ import {MdWork, MdSchool, MdStar} from 'react-icons/md';
 import {experienceItems} from "../data/experience";
 import {ExperienceItem} from "../interfaces";
 import PageSection from "./PageSection";
+import Image from "next/image";
 
 
 
@@ -36,7 +37,7 @@ function ExperienceItemBlock(item: ExperienceItem) {
             icon={icon}
         >
             <div className="flex space-x-2 items-center ">
-                { item?.icon ? <img
+                { item?.icon ? <Image
                     src={item.icon}
                     alt={item.title}
                     className="experience-logo"

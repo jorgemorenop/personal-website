@@ -98,7 +98,7 @@ export default function Skills() {
             <h2>Certifications</h2>
             <div className="flex justify-center">
                 {certifications.map((certification) =>
-                    <a href={certification.url}>
+                    <a key={certification.name} href={certification.url}>
                         <div className="rounded-md shadow-md w-40 p-4">
                             <img
                                 src={certification.icon}
@@ -144,10 +144,11 @@ function Roles() {
             <RolesTable>
                 {roles.map(role =>
                     // <li>
-                    <RoleSlot title={role.name}>
+                    <RoleSlot key={role.name} title={role.name}>
                         <ul className="role">
                             {role.descriptions.map(x =>
                                 <li
+                                    key={x}
                                     // className="role"
                                     // style={{listStyleType: "circle", listStylePosition: "inside"}}
                                 >
