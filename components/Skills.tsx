@@ -1,13 +1,7 @@
 import * as React from 'react';
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-
 import {skills, roles, certifications} from "../data/skills";
-import {MdWork, MdArrowDropUp, MdArrowDropDown} from "react-icons/md";
+import {MdArrowDropUp, MdArrowDropDown} from "react-icons/md";
 import {useEffect} from "react";
 import {Chip} from "@mui/material";
 import {Skill} from "../interfaces";

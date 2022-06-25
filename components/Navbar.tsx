@@ -1,4 +1,4 @@
-import {AiFillGithub, AiFillLinkedin} from 'react-icons/ai';
+import {AiFillGithub, AiFillLinkedin, AiOutlineMail} from 'react-icons/ai';
 import {Link as ScrollLink, animateScroll as scroll} from 'react-scroll';
 import Link from 'next/link'
 import {Fragment} from 'react'
@@ -96,6 +96,10 @@ export default function Navbar() {
                                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 ml-2">
                                 <AiFillLinkedin size="3rem"/>
                             </a>
+                            <a href="mailto:jorgemorenodev@gmail.com"
+                               className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 ml-2">
+                                <AiOutlineMail size="3rem"/>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -125,6 +129,10 @@ export default function Navbar() {
                                     <a href="https://www.linkedin.com/in/jorgemorenop/"
                                        className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 ml-2">
                                         <AiFillLinkedin size="3rem"/>
+                                    </a>
+                                    <a href="mailto:jorgemorenodev@gmail.com"
+                                       className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 ml-2">
+                                        <AiOutlineMail size="3rem"/>
                                     </a>
                                 </div>
                             </div>
