@@ -123,7 +123,7 @@ export default function Skills() {
 function SkillItem(skill: Skill) {
     // let stars = '⭐️'.repeat(skill.strength)
     return (
-        <li>
+        <li key={skill.name}>
             <div className="flex py-1 my-1 px-2 bg-blue-50 w-full">
                 <div className="mr-3">
                     <p>{skill.name}</p>

@@ -10,7 +10,7 @@ export default function About() {
                         className="rounded-full"
                         height={400}
                         width={400}
-                        src="/profile_image.jpeg"
+                        src="/profile_image_medium.jpeg"
                         alt="Profile image"
                     />
                 </div>
