@@ -210,6 +210,11 @@ export const certifications: Certification[] = [
         icon: "aws-certified-solutions-architect-associate.png",
         url: "https://www.credly.com/badges/c297ffed-0668-465b-9f8a-79ee1901143c/public_url"
     },
+    {
+        name: "Databricks Lakehouse Fundamentals",
+        icon: "https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/55197915",
+        url: "https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/55197915"
+    },
 ]
 
 

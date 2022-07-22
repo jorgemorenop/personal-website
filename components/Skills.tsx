@@ -96,7 +96,7 @@ export default function Skills() {
 
 
             <h2>Certifications</h2>
-            <div className="flex justify-center">
+            <div className="flex justify-center gap-8">
                 {certifications.map((certification) =>
                     <a key={certification.name} href={certification.url}>
                         <div className="rounded-md shadow-md w-40 p-4">
