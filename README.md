@@ -1,5 +1,8 @@
 # A web portfolio
 
+This repository contains the source code implemented in order to develop my personal website: [jorgemoreno.co](https://www.jorgemoreno.co/)
+
+It uses React, Typescript, Next.js and Tailwind. I'm not very used to some of these technologies so it may be some room for improvement. Ping me with any suggestions 🙂! 
 
 
 ## About the project
