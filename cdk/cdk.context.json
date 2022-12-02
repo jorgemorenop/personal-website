@@ -1,0 +1,10 @@
+{
+  "hosted-zone:account=002148387625:domainName=datopato.com:region=eu-west-1": {
+    "Id": "/hostedzone/Z088128992EVDE5QRIRW",
+    "Name": "datopato.com."
+  },
+  "hosted-zone:account=002148387625:domainName=jorgemoreno.co:region=eu-west-1": {
+    "Id": "/hostedzone/Z05529172ALFH9D8U3OJU",
+    "Name": "jorgemoreno.co."
+  }
+}

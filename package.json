@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "build-s3": "next build && next export",
     "start": "next start",
     "type-check": "tsc"
   },

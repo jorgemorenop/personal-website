@@ -7,6 +7,16 @@ It uses React, Typescript, Next.js and Tailwind. I'm not very used to some of th
 
 ## About the project
 
+### Deploy changes
+1. Build static files for website:
+    ```bash
+    npm run build-s3
+   ```
+2. Deploy with CDK:
+    ```bash
+   cd cdk && cdk deploy --profile <AWS_PROFILE> 
+   ```
+
 ### How was it created
 This project was created from a sample project that shows the usage of Next.js with TypeScript.
 
@@ -35,4 +45,3 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 
 ### Other project configuration
 - Tailwind: https://dev.to/ethand91/creating-a-react-app-with-typescript-tailwind-support-18b8
-- 
