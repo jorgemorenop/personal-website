@@ -4,7 +4,8 @@ import About from "../components/About";
 
 
 import { Element } from 'react-scroll'
-import Contact from "../components/Contact";
+import Projects from "../components/Projects";
+import Footer from "../components/Footer";
 
 
 const IndexPage = () => (
@@ -15,7 +16,8 @@ const IndexPage = () => (
         <About />
         <Skills />
         <Experience/>
-        <Contact/>
+        <Projects/>
+        <Footer/>
     </main>
 )
 

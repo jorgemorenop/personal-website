@@ -1,6 +1,10 @@
 import {Certification, Role, Skill} from "../interfaces";
 
-
+// TODO(Jorge): "Update known technologies" is only structural for now. Still missing from this list:
+//  - the up-to-date list of technologies you currently know/use (add/remove entries below)
+//  - a revised `strength` (1-5) for each existing skill
+//  - the right `categories` for any new entries (see Skill in interfaces/index.ts)
+// Nothing here has been changed on purpose: no skills were invented.
 export const skills: Skill[] = [
     {
         name: "AWS",

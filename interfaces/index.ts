@@ -39,3 +39,13 @@ export type Certification = {
     icon: string,
     url: string
 }
+
+// Projects
+
+export type Project = {
+    title: string,
+    description: string,
+    url: string | null,
+    category: "android" | "web" | "repo",
+    placeholder?: boolean,
+}
